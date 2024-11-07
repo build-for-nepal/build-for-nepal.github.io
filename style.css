@@ -1,0 +1,160 @@
+/* Basic Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f7fa; /* Light gray background */
+  color: #333;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+header {
+  background-color: #006f98;
+  color: white;
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.logo {
+  width: 200px;
+  height: auto;
+}
+
+.header-text h1 {
+  font-size: 1.2rem;
+  margin: 0;
+}
+
+.header-text p {
+  font-size: 0.6rem;
+  margin: 5px 0 0;
+}
+
+.hero {
+  padding: 50px 0;
+  text-align: center;
+  background-color: #ffffff;
+}
+
+.hero h2 {
+  font-size: 2.2rem;
+  color: #333;
+  padding: 10px;
+}
+
+.hero-image {
+  padding-top: 10px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 15px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+}
+
+.sections {
+  display: flex;
+  justify-content: space-around;
+  margin: 50px 0;
+  gap: 10px;
+  padding: 0 20px;
+}
+
+.section {
+  padding: 30px;
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  text-align: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.section:hover {
+  transform: scale(1.03); /* Hover effect to highlight sections */
+}
+
+.section h3 {
+  color: #006f98; /* Deep blue */
+  font-size: 1.8rem;
+}
+
+.section p {
+  font-size: 1rem;
+  color: #666;
+}
+
+.btn {
+  background-color: #ff8502; /* Light blue accent */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s;
+  margin-top: 10px;
+}
+
+.btn:hover {
+  background-color: #007c91; /* Darker blue on hover */
+}
+
+footer {
+  background-color: #333;
+  color: white;
+  padding: 22px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .sections {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 10px;
+  }
+
+  .section {
+    width: 90%;
+  }
+
+  .hero h2 {
+    font-size: 1.8rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .sections {
+    padding: 0 10px;
+  }
+  .section {
+    width: 100%;
+  }
+  .hero h2 {
+    font-size: 1.5rem;
+  }
+
+  .hero p {
+    font-size: 0.9rem;
+  }
+}
