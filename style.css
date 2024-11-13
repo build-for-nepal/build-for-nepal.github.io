@@ -15,6 +15,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  font-size: 16px; /* Base font size for desktops */
 }
 
 header {
@@ -75,9 +76,11 @@ header {
   margin: 50px 0;
   gap: 10px;
   padding: 0 20px;
+  flex-wrap: wrap;
 }
 
 .section {
+  flex: 1;
   padding: 30px;
   background-color: #fff;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -87,11 +90,11 @@ header {
 }
 
 .section:hover {
-  transform: scale(1.03); /* Hover effect to highlight sections */
+  transform: scale(1.03);
 }
 
 .section h3 {
-  color: #006f98; /* Deep blue */
+  color: #006f98;
   font-size: 1.8rem;
 }
 
@@ -100,8 +103,17 @@ header {
   color: #666;
 }
 
+.btn-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
 .btn {
-  background-color: #ff8502; /* Light blue accent */
+  background-color: #ff8502;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -109,11 +121,47 @@ header {
   cursor: pointer;
   border-radius: 5px;
   transition: background-color 0.3s;
-  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.btn i {
+  font-size: 13px;
+  margin-bottom: 2px;
 }
 
 .btn:hover {
-  background-color: #007c91; /* Darker blue on hover */
+  background-color: #007c91;
+}
+
+.npm-link,
+.github-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 6px 12px;
+  font-size: 1rem;
+  color: white;
+  background-color: #ff8502;
+  text-decoration: none;
+  border-radius: 5px;
+  margin-left: 10px;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+}
+
+.npm-link i,
+.github-link i {
+  width: 15px;
+}
+
+.npm-link:hover {
+  background-color: #007c91;
+}
+
+.github-link:hover {
+  background-color: #333;
+  opacity: 0.8;
 }
 
 footer {
@@ -123,38 +171,79 @@ footer {
   text-align: center;
 }
 
-@media (max-width: 768px) {
-  .sections {
-    flex-direction: column;
-    align-items: center;
-    padding: 0 10px;
+/* Responsive Font Sizes */
+@media (max-width: 820px) {
+  body {
+    font-size: 15px; /* Slightly smaller base font size for tablets */
   }
 
-  .section {
-    width: 90%;
+  header .header-text h1 {
+    font-size: 1rem; /* Adjust header title */
+  }
+
+  header .header-text p {
+    font-size: 0.55rem; /* Adjust header subtitle */
   }
 
   .hero h2 {
-    font-size: 1.8rem;
+    font-size: 1.8rem; /* Smaller headline for hero section */
   }
 
   .hero p {
-    font-size: 1rem;
+    font-size: 1rem; /* Adjust body text in hero section */
+  }
+
+  .section h3 {
+    font-size: 1.6rem; /* Section titles */
+  }
+
+  .section p {
+    font-size: 0.9rem; /* Section descriptions */
+  }
+
+  .btn {
+    font-size: 0.9rem; /* Button text */
+  }
+
+  footer {
+    font-size: 0.85rem; /* Footer text */
   }
 }
 
 @media (max-width: 480px) {
-  .sections {
-    padding: 0 10px;
+  body {
+    font-size: 14px; /* Smaller base font size for mobile phones */
   }
-  .section {
-    width: 100%;
+
+  header .header-text h1 {
+    font-size: 0.9rem; /* Compact header title */
   }
+
+  header .header-text p {
+    font-size: 0.5rem; /* Compact header subtitle */
+  }
+
   .hero h2 {
-    font-size: 1.5rem;
+    font-size: 1.5rem; /* Hero section headline */
   }
 
   .hero p {
-    font-size: 0.9rem;
+    font-size: 0.85rem; /* Hero section body text */
+  }
+
+  .section h3 {
+    font-size: 1.4rem; /* Smaller section titles */
+  }
+
+  .section p {
+    font-size: 0.8rem; /* Smaller section descriptions */
+  }
+
+  .btn {
+    font-size: 0.8rem; /* Smaller button text */
+  }
+
+  footer {
+    font-size: 0.8rem; /* Footer text */
   }
 }
