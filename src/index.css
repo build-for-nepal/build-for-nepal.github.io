@@ -1,0 +1,15 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #006f98;
+  --color-accent: #ff8502;
+  --color-accent-hover: #007c91;
+  --color-bg: #f4f7fa;
+  --color-dark: #333333;
+  --color-muted: #666666;
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+}
+
+body {
+  @apply bg-bg font-sans;
+}
