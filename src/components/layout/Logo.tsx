@@ -2,22 +2,18 @@ import { Link } from "react-router-dom";
 
 export default function Logo() {
   return (
-    <Link
-      to="/"
-      aria-label="Build for Nepal- go to homepage"
-      className="flex flex-col items-start"
-    >
+    <Link to="/" aria-label="Build for Nepal- go to homepage">
       {/*Mountain SVG icon*/}
-      <MountainIcon className="h-8 w-auto" />
+      <MountainIcon className="h-12 w-auto" />
     </Link>
   );
 }
 function MountainIcon({ className }: { className?: string }) {
   return (
     <svg
-      width="142"
-      height="53"
       viewBox="0 0 142 53"
+      aria-hidden="true"
+      className={className}
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
