@@ -20,8 +20,10 @@ export default function LinkButton({
   children,
 }: LinkButtonProps) {
   const baseClasses = cn(
-    "inline-flex items-center gap-2 rounded-md border border-primary px-4 py-2",
-    "text-sm font-medium text-primary",
+    // Layout — tighter on mobile, roomier on tablet+.
+    "inline-flex items-center justify-center gap-1.5 rounded-md border border-primary",
+    "px-3 py-1.5 text-xs sm:gap-2 sm:px-4 sm:py-2 sm:text-sm",
+    "font-medium text-primary",
     "transition-colors hover:bg-primary hover:text-white",
     "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2",
     className,

@@ -6,10 +6,6 @@ interface ProjectInfoProps {
   className?: string;
 }
 
-/**
- * Title + description block for the active Innovation Hub project.
- * Layout-agnostic — parent decides where it sits.
- */
 export default function ProjectInfo({ item, className }: ProjectInfoProps) {
   const { id, title, description } = item;
   return (
