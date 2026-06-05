@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { SLIDES_DATA } from "./hero.constants";
-import HeroDots from "./components/HeroDots";
-import HeroSlide from "./slides/HeroSlide";
+import { SLIDES_DATA } from "@/data/hero";
+import HeroDots from "./HeroDots";
+import HeroSlide from "./HeroSlide";
 
 gsap.registerPlugin(useGSAP);
 
