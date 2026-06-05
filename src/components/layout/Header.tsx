@@ -8,7 +8,7 @@ import { Menu, X } from "lucide-react";
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <header className="bg-white shadow[0_4px_4px_0_rgba(0,0,0,0.12)]">
+    <header className="bg-white [box-shadow:0_4px_4px_0_rgba(0,0,0,0.12)]">
       <div className="mx-auto flex h-21 max-w-7xl items-center justify-between px-4 lg:px-8">
         <Logo />
 
