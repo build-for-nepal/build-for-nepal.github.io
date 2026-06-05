@@ -1,7 +1,11 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 import { SLIDES_DATA } from "./hero.constants";
 import HeroDots from "./components/HeroDots";
 import HeroSlide from "./slides/HeroSlide";
+
+gsap.registerPlugin(useGSAP);
 
 export default function Hero() {
   const [current, setCurrent] = useState(0);
@@ -9,14 +13,20 @@ export default function Hero() {
   const [paused, setPaused] = useState(false);
   const transitioning = useRef(false);
   const touchStartX = useRef(0);
+  const slideRef = useRef<HTMLDivElement>(null);
 
-  const goTo = useCallback((index: number, dir: "right" | "left") => {
-    if (transitioning.current || index === current) return;
-    transitioning.current = true;
-    setDirection(dir);
-    setCurrent(index);
-    setTimeout(() => { transitioning.current = false; }, 450);
-  }, [current]);
+  const goTo = useCallback(
+    (index: number, dir: "right" | "left") => {
+      if (transitioning.current || index === current) return;
+      transitioning.current = true;
+      setDirection(dir);
+      setCurrent(index);
+      setTimeout(() => {
+        transitioning.current = false;
+      }, 450);
+    },
+    [current],
+  );
 
   const prev = useCallback(
     () => goTo((current - 1 + SLIDES_DATA.length) % SLIDES_DATA.length, "left"),
@@ -34,22 +44,35 @@ export default function Hero() {
     return () => clearInterval(id);
   }, [paused, next]);
 
+  useGSAP(
+    () => {
+      gsap.killTweensOf(slideRef.current);
+      gsap.set(slideRef.current, { opacity: 0, x: direction === "right" ? 40 : -40 });
+      gsap.to(slideRef.current, {
+        opacity: 1,
+        x: 0,
+        duration: 0.55,
+        ease: "power3.out",
+      });
+    },
+    { dependencies: [current] },
+  );
+
   return (
     <section
       aria-label="Hero"
-      className="relative min-h-[calc(100dvh-5.25rem)] w-full overflow-visible sm:overflow-hidden"
+      className="relative min-h-hero w-full overflow-hidden bg-primary"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
-      onTouchStart={(e) => { touchStartX.current = e.touches[0].clientX; }}
+      onTouchStart={(e) => {
+        touchStartX.current = e.touches[0].clientX;
+      }}
       onTouchEnd={(e) => {
         const diff = touchStartX.current - e.changedTouches[0].clientX;
         if (Math.abs(diff) > 50) diff > 0 ? next() : prev();
       }}
     >
-      <div
-        key={current}
-        className={`w-full ${direction === "right" ? "animate-slide-from-right" : "animate-slide-from-left"}`}
-      >
+      <div ref={slideRef} className="w-full">
         <HeroSlide slide={SLIDES_DATA[current]} onPrev={prev} onNext={next} />
       </div>
 

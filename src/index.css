@@ -7,6 +7,7 @@
   --color-bg: #f4f7fa;
   --color-dark: #333333;
   --color-muted: #666666;
+  --color-nav: #444444;
   --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
 }
 
@@ -15,23 +16,19 @@ body {
 }
 
 .nav-link {
-  @apply text-sm font-medium text-[#444444] transition-colors duration-150 hover:text-primary;
+  @apply text-sm font-medium text-nav transition-colors duration-150 hover:text-primary;
 }
 
 .nav-link-active {
   @apply text-primary;
 }
-@keyframes slide-from-right {
-  from { opacity: 0; transform: translateX(48px); }
-  to   { opacity: 1; transform: translateX(0); }
+
+@layer utilities {
+  .h-hero {
+    height: calc(100dvh - 5.25rem);
+  }
+  .min-h-hero {
+    min-height: calc(100dvh - 5.25rem);
+  }
 }
 
-@keyframes slide-from-left {
-  from { opacity: 0; transform: translateX(-48px); }
-  to   { opacity: 1; transform: translateX(0); }
-}
-
-@theme {
-  --animate-slide-from-right: slide-from-right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-  --animate-slide-from-left:  slide-from-left  0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-}

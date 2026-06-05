@@ -1,3 +1,5 @@
+import { cn } from "@/lib/utils";
+
 interface HeroDotsProps {
   count: number;
   current: number;
@@ -13,11 +15,12 @@ export default function HeroDots({ count, current, onSelect }: HeroDotsProps) {
           onClick={() => onSelect(i)}
           aria-label={`Go to slide ${i + 1}`}
           aria-current={i === current ? true : undefined}
-          className={`rounded-full transition-all duration-300 h-2 sm:h-2.5 ${
+          className={cn(
+            "h-2 rounded-full transition-all duration-300 sm:h-2.5",
             i === current
-              ? "w-5 sm:w-6 bg-accent"
-              : "w-2 sm:w-2.5 bg-white/50 hover:bg-white/75"
-          }`}
+              ? "w-5 bg-accent sm:w-6"
+              : "w-2 bg-white/50 hover:bg-white/75 sm:w-2.5",
+          )}
         />
       ))}
     </nav>
