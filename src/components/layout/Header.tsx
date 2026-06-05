@@ -1,4 +1,4 @@
-import { NAV_ITEMS } from "@/components/home/Hero/constants/navigation";
+import { NAV_ITEMS } from "@/data/navigation";
 import Logo from "./Logo";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";

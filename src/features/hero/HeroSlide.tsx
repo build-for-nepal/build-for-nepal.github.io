@@ -1,5 +1,5 @@
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import type { SlideData } from "../hero.constants";
+import type { SlideData } from "@/data/hero";
 import { Link } from "react-router-dom";
 import cityFullImg from "@/assets/city.svg";
 
