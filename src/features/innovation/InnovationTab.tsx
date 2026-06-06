@@ -7,13 +7,6 @@ interface InnovationTabProps {
   onSelect: (id: string) => void;
 }
 
-/**
- * One row in the Innovation Hub's tab list.
- *
- * The rail (continuous gray line) lives on the parent. Each tab paints
- * a teal accent over its segment of the rail when active — same exact
- * positioning as the rail itself, so it covers cleanly.
- */
 export default function InnovationTab({
   item,
   isActive,
@@ -35,20 +28,16 @@ export default function InnovationTab({
         // Padding only — the rail is on the parent.
         "px-3 py-2 xl:w-full xl:px-5 xl:py-5 xl:text-base",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40",
-        isActive
-          ? "font-semibold text-primary"
-          : "text-slate-400 hover:text-slate-600",
+        isActive ?
+          "font-semibold text-primary"
+        : "text-slate-400 hover:text-slate-600",
       )}
     >
-      {/* Active accent — paints teal over the rail at this tab's
-          segment. Positioning matches the rail exactly. */}
       <span
         aria-hidden
         className={cn(
           "pointer-events-none absolute bg-primary transition-opacity",
-          // Mobile: bottom line.
           "inset-x-0 bottom-0 h-[2px]",
-          // Desktop: left line.
           "xl:inset-x-auto xl:left-0 xl:inset-y-0 xl:h-full xl:w-[2px]",
           isActive ? "opacity-100" : "opacity-0",
         )}
