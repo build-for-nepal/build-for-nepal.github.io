@@ -15,8 +15,10 @@ export default function ProjectInfo({ item, className }: ProjectInfoProps) {
       aria-labelledby={`innovation-tab-${id}`}
       className={cn("flex flex-col gap-2 sm:gap-3", className)}
     >
-      <h3 className="text-xl font-bold text-dark sm:text-2xl">{title}</h3>
-      <p className="text-sm leading-relaxed text-muted sm:text-base">
+      <h3 className="text-xl font-bold text-dark sm:text-2xl xl:text-3xl">
+        {title}
+      </h3>
+      <p className="text-sm leading-relaxed text-muted sm:text-base xl:leading-loose">
         {description}
       </p>
     </div>
