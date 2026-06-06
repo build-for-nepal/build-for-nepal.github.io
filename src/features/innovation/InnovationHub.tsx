@@ -74,7 +74,7 @@ export default function InnovationHub() {
       onFocus={() => setIsPaused(true)}
       onBlur={() => setIsPaused(false)}
     >
-      <div className="mx-auto w-full max-w-6xl px-4 py-16 sm:py-20 xl:max-w-7xl xl:px-12">
+      <div className="page-wrapper py-16 sm:py-20">
         {/* ── HEADER ──────────────────────────────────────────────── */}
         <header className="mb-10 text-center">
           <h2

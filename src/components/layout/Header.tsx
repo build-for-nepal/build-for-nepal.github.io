@@ -9,7 +9,7 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <header className="bg-white [box-shadow:0_4px_4px_0_rgba(0,0,0,0.12)]">
-      <div className="mx-auto flex h-21 max-w-7xl items-center justify-between px-4 lg:px-8">
+      <div className="page-wrapper flex h-21 items-center justify-between">
         <Logo />
 
         <nav className="hidden items-center gap-8 lg:flex">
