@@ -25,6 +25,27 @@ body {
   @apply text-primary;
 }
 
+/* Shared input styling — used by ContactForm <input>, <select>, <textarea>.
+   Light gray fill matches the design, teal focus ring matches the brand.
+   Stronger border (gray-300) so it stays visible against the gray-50 fill. */
+.input-base {
+  @apply w-full rounded-lg border border-gray-300 bg-gray-50 px-4 py-3 text-sm text-dark
+         placeholder:text-gray-400
+         focus:border-primary focus:bg-white focus:outline-none focus:ring-2 focus:ring-primary/20
+         transition-colors duration-150;
+}
+
+/* Select-specific overrides.
+   - appearance-none kills the default OS arrow so we can render our own
+   - bg-[url] adds a custom chevron SVG, positioned right
+   - pr-10 reserves space so the selected text never collides with the chevron */
+select.input-base {
+  @apply appearance-none bg-no-repeat pr-10;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23666666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-position: right 1rem center;
+  background-size: 1rem;
+}
+
 @layer utilities {
   .page-wrapper {
     @apply mx-auto w-full max-w-7xl px-4 lg:px-8;
