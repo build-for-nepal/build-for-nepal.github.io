@@ -1,4 +1,5 @@
 import Mission from "@/features/mission/Mission";
+import CoreProducts from "@/features/coreProducts/CoreProducts";
 import { INNOVATION_ITEMS } from "@/data/innovation";
 
 export default function About() {
@@ -7,6 +8,7 @@ export default function About() {
   return (
     <main>
       <Mission activeProductCount={activeProductCount} />
+      <CoreProducts />
     </main>
   );
 }

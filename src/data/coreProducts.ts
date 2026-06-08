@@ -1,6 +1,6 @@
 import { ArrowLeftRight, Calendar, Mountain } from "lucide-react";
 import type { Product } from "@/types/product";
-import trailNepalImg from "@/assets/trail-nepal.svg";
+import trailNepalImg from "@/assets/trailNepal.png";
 
 export const FEATURED_PRODUCT_ID = "trails-nepal";
 
