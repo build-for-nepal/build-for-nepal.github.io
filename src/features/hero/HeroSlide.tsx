@@ -3,6 +3,40 @@ import type { SlideData } from "@/data/hero";
 import { Link } from "react-router-dom";
 import cityFullImg from "@/assets/city.svg";
 
+// hash → native <a> (smooth scroll), external → new tab, else → React Router Link
+function CtaLink({
+  href,
+  className,
+  children,
+}: {
+  href: string;
+  className: string;
+  children: React.ReactNode;
+}) {
+  if (href.startsWith("#"))
+    return (
+      <a href={href} className={className}>
+        {children}
+      </a>
+    );
+  if (href.startsWith("http"))
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={className}
+      >
+        {children}
+      </a>
+    );
+  return (
+    <Link to={href} className={className}>
+      {children}
+    </Link>
+  );
+}
+
 interface HeroSlideProps {
   slide: SlideData;
   onPrev: () => void;
@@ -42,13 +76,11 @@ export default function HeroSlide({ slide, onPrev, onNext }: HeroSlideProps) {
         : undefined
       }
     >
-      {/* ── OVERLAYS ──────────────────────────────────────────────────── */}
       {hasPhoto && <div className="absolute inset-0 bg-primary/85 sm:hidden" />}
       {hasPhoto && (
         <div className="absolute inset-0 hidden bg-linear-to-r from-primary/90 via-primary/75 to-primary/50 sm:block" />
       )}
 
-      {/* ── TEXT (now inside page-wrapper so it lines up with the navbar) ── */}
       <div className="page-wrapper relative z-20">
         <div className="flex flex-col items-center pb-[4dvh] text-center sm:max-w-[52%] sm:items-start sm:pb-0 sm:text-left">
           <h1 className="text-3xl font-bold leading-tight text-white sm:text-4xl lg:text-5xl xl:text-6xl">
@@ -63,19 +95,17 @@ export default function HeroSlide({ slide, onPrev, onNext }: HeroSlideProps) {
             <SlideArrowButton direction="next" onClick={onNext} />
           </div>
 
-          <Link
-            to={ctaHref}
+          <CtaLink
+            href={ctaHref}
             className="mt-4 inline-flex h-11 items-center gap-2 rounded-full border-2 border-white bg-white px-5 text-xs font-semibold text-primary transition-all duration-200 hover:bg-transparent hover:text-white sm:mt-5 sm:px-8 sm:text-base"
           >
             {ctaLabel}
             <ChevronRight size={16} aria-hidden />
-          </Link>
+          </CtaLink>
         </div>
       </div>
 
-      {/* ── ILLUSTRATION ─────────────────────────────────────────────── */}
-
-      {/* Hiker — in flow below text on mobile, absolute on desktop */}
+      {/* Photo slides: hiker absolute-positioned, fills bottom-right */}
       {hasPhoto && (
         <div className="pointer-events-none absolute bottom-0 right-0 z-10 h-[50dvh] w-full sm:h-hero sm:w-full lg:w-full">
           <img
@@ -86,7 +116,7 @@ export default function HeroSlide({ slide, onPrev, onNext }: HeroSlideProps) {
         </div>
       )}
 
-      {/* City SVG — mobile: full city, in flow below text */}
+      {/* Non-photo slides: full city on mobile */}
       {!hasPhoto && (
         <div className="pointer-events-none absolute bottom-0 left-0 right-0 z-10 h-[45dvh] sm:hidden">
           <img
@@ -97,7 +127,7 @@ export default function HeroSlide({ slide, onPrev, onNext }: HeroSlideProps) {
         </div>
       )}
 
-      {/* City SVG — desktop: half city, absolute bottom right */}
+      {/* Non-photo slides: half-city bottom-right on desktop */}
       {!hasPhoto && (
         <div className="absolute bottom-0 right-0 z-10 hidden w-max sm:block">
           <img

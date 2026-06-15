@@ -1,20 +1,21 @@
 import { ArrowRight } from "lucide-react";
-import type { Product } from "@/types/product";
+import type { Project } from "@/types/project";
 
 interface FeaturedProductCardProps {
-  product: Product;
+  product: Project;
 }
 
 export default function FeaturedProductCard({
   product,
 }: FeaturedProductCardProps) {
-  const { title, description, href, isLive, image } = product;
+  const { title, description, isLive, featuredImage } = product;
+  const primaryLink = product.links[0];
 
   return (
-    <article className="relative flex h-full min-h-[15rem] flex-col justify-end overflow-hidden rounded-2xl sm:min-h-[17rem] lg:min-h-[20rem] ">
-      {image && (
+    <article className="relative flex h-full min-h-60 flex-col justify-end overflow-hidden rounded-2xl sm:min-h-68 lg:min-h-80">
+      {featuredImage && (
         <img
-          src={image.src}
+          src={featuredImage.src}
           alt=""
           aria-hidden="true"
           className="absolute inset-0 h-full w-full object-cover"
@@ -22,7 +23,7 @@ export default function FeaturedProductCard({
       )}
 
       <div
-        className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"
+        className="absolute inset-0 bg-linear-to-t from-black/70 via-black/30 to-transparent"
         aria-hidden="true"
       />
 
@@ -40,10 +41,12 @@ export default function FeaturedProductCard({
         </p>
 
         <a
-          href={href}
+          href={primaryLink.href}
+          target={primaryLink.external ? "_blank" : undefined}
+          rel={primaryLink.external ? "noreferrer noopener" : undefined}
           className="mt-6 inline-flex h-11 items-center gap-2 rounded-lg border border-white/80 px-5 text-sm font-semibold text-white transition-colors hover:bg-white/10 sm:mt-8"
         >
-          Explore Trails
+          {primaryLink.label}
           <ArrowRight className="h-4 w-4" aria-hidden="true" />
         </a>
       </div>

@@ -4,13 +4,10 @@ import FeaturedProductCard from "./FeaturedProductCard";
 import MoreInDevCard from "./MoreInDevCard";
 
 const featured = CORE_PRODUCTS.find((p) => p.id === FEATURED_PRODUCT_ID);
-
 const standard = CORE_PRODUCTS.filter((p) => p.id !== FEATURED_PRODUCT_ID);
 
 export default function CoreProducts() {
   if (!featured) return null;
-
-  const [adBs, calendar] = standard;
 
   return (
     <section aria-labelledby="core-products-heading" className="bg-bg">
@@ -27,19 +24,19 @@ export default function CoreProducts() {
           </p>
         </header>
 
-        <div className="grid grid-cols-1 gap-6 sm:gap-8 lg:auto-rows-fr lg:grid-cols-3">
-          <div className="lg:col-span-2">
+        <div className="grid grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-3">
+          <div className="lg:col-span-3">
             <FeaturedProductCard product={featured} />
           </div>
 
-          <ProductCard
-            product={adBs}
-            iconTileClass="bg-indigo-100 text-indigo-600"
-          />
+          {/* display:contents makes cards direct grid children; h-full equalizes heights in this row only */}
+          <div className="contents lg:*:h-full">
+            {standard.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
 
-          <ProductCard product={calendar} />
-
-          <div className="lg:col-span-2">
+          <div className="lg:col-span-3">
             <MoreInDevCard />
           </div>
         </div>

@@ -12,41 +12,27 @@ gsap.registerPlugin(useGSAP);
 
 const AUTO_ADVANCE_MS = 6000;
 
-/**
- * "Innovation Hub" section.
- *
- * Mobile / tablet (< xl):
- *   [ tabs (horizontal scroll)            ]
- *   [ title + desc (3/5) | image (2/5)    ]
- *   [ CTAs (full width)                   ]
- *
- * Desktop (>= xl):
- *   [ tabs | image | title + desc + CTAs  ]
- *
- * Image and content boxes use fixed dimensions so swapping items
- * never shifts the surrounding layout.
- */
+// Mobile/tablet (<xl): tabs → [info 3/5 | image 2/5] → CTAs
+// Desktop (≥xl):       tabs | image | info + CTAs
 export default function InnovationHub() {
   const { active, activeId, setActiveId } = useInnovationTabs(INNOVATION_ITEMS);
   const [isPaused, setIsPaused] = useState(false);
   const bodyRef = useRef<HTMLDivElement>(null);
 
-  // Advance to the next item, wrapping at the end.
   const next = useCallback(() => {
     const i = INNOVATION_ITEMS.findIndex((item) => item.id === activeId);
     const nextItem = INNOVATION_ITEMS[(i + 1) % INNOVATION_ITEMS.length];
     setActiveId(nextItem.id);
   }, [activeId, setActiveId]);
 
-  // Auto-advance. Each tab change resets the interval.
+  // resets the interval on every tab change
   useEffect(() => {
     if (isPaused) return;
     const id = setInterval(next, AUTO_ADVANCE_MS);
     return () => clearInterval(id);
   }, [isPaused, next]);
 
-  // Slow, smooth fade-up on every active item change. Scoped to the
-  // body so only the changing content animates — tabs stay put.
+  // fade-up on tab change; scoped so tabs don't animate
   useGSAP(
     () => {
       gsap.fromTo(
@@ -67,6 +53,7 @@ export default function InnovationHub() {
 
   return (
     <section
+      id="innovation-hub"
       aria-labelledby="innovation-hub-heading"
       className="bg-bg"
       onMouseEnter={() => setIsPaused(true)}
@@ -75,7 +62,6 @@ export default function InnovationHub() {
       onBlur={() => setIsPaused(false)}
     >
       <div className="page-wrapper py-16 sm:py-20">
-        {/* ── HEADER ──────────────────────────────────────────────── */}
         <header className="mb-10 text-center">
           <h2
             id="innovation-hub-heading"
@@ -88,19 +74,17 @@ export default function InnovationHub() {
           </p>
         </header>
 
-        {/* ── BODY ────────────────────────────────────────────────── */}
         <div
           ref={bodyRef}
           className="mx-auto flex w-full max-w-2xl flex-col gap-6 xl:max-w-none xl:grid xl:grid-cols-[240px_360px_1fr] xl:items-start xl:gap-16"
         >
-          {/* Tabs — never animated, never shifts. */}
           <InnovationTabList
             items={INNOVATION_ITEMS}
             activeId={activeId}
             onSelect={setActiveId}
           />
 
-          {/* MOBILE / TABLET: fixed-height row, text 3/5, image 2/5. */}
+          {/* mobile/tablet */}
           <div className="grid grid-cols-5 items-center gap-4 xl:hidden">
             <ProjectInfo
               item={active}
@@ -112,22 +96,18 @@ export default function InnovationHub() {
             />
           </div>
 
-          {/* MOBILE / TABLET: CTAs full width below. */}
           <ProjectActions
             item={active}
             className="js-innovation-fade xl:hidden"
           />
 
-          {/* DESKTOP: middle column — illustration in a fixed box. */}
+          {/* desktop */}
           <ProjectImage
             item={active}
             className="js-innovation-fade hidden h-80 w-full xl:flex"
           />
 
-          {/* DESKTOP: right column — info + CTAs stacked.
-              min-h reserves vertical space so descriptions of different
-              lengths never push CTAs around. pt offset drops the title
-              slightly below the image top for a softer alignment. */}
+          {/* min-h prevents layout shift when descriptions change length */}
           <div className="hidden min-h-80 flex-col justify-start gap-6 pt-8 xl:flex">
             <ProjectInfo item={active} className="js-innovation-fade" />
             <ProjectActions item={active} className="js-innovation-fade" />

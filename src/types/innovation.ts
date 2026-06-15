@@ -1,18 +1,13 @@
-import type { LucideIcon } from "lucide-react";
+import type { Project, ProjectLink } from "./project";
 
-export interface InnovationLinks {
-  label: string;
-  href: string;
-  icon: LucideIcon;
-  external?: boolean;
-}
+/**
+ * @deprecated Use `Project` from "@/types/project" directly.
+ * Kept as an alias so existing Innovation Hub components compile
+ * without a sweeping rename.
+ */
+export type InnovationItem = Project;
 
-export interface InnovationItem {
-  id: string;
-  label: string;
-  icon: LucideIcon;
-  title: string;
-  description: string;
-  image: { src: string; alt: string };
-  links: InnovationLinks[];
-}
+/**
+ * @deprecated Use `ProjectLink` from "@/types/project" directly.
+ */
+export type InnovationLinks = ProjectLink;

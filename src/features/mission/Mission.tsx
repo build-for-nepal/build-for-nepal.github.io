@@ -4,7 +4,6 @@ import laptopCoffeeImg from "@/assets/laptopCoffee.png";
 export default function Mission({ activeProductCount }: MissionProps) {
   return (
     <section aria-labelledby="mission-heading">
-      {/* Teal banner */}
       <div className="bg-primary px-6 pt-20 pb-40 text-center">
         <span className="inline-block bg-white text-primary font-semibold text-sm px-5 py-2 rounded-full shadow-sm">
           Our Mission
@@ -17,10 +16,9 @@ export default function Mission({ activeProductCount }: MissionProps) {
         </h2>
       </div>
 
-      {/* White content card — overlaps the banner */}
+      {/* -mt-10 pulls the card up to overlap the teal banner above */}
       <div className="page-wrapper -mt-10">
         <div className="bg-white rounded-3xl shadow-sm p-8 md:p-12 grid md:grid-cols-2 gap-10 items-center">
-          {/* Left column: heading + paragraphs */}
           <div>
             <h3 className="text-2xl md:text-3xl font-bold text-primary leading-snug">
               Built for Nepal, by Developers who know Nepal.
@@ -50,7 +48,6 @@ export default function Mission({ activeProductCount }: MissionProps) {
             </div>
           </div>
 
-          {/* Right column: image + floating stat badge */}
           <div className="relative">
             <img
               src={laptopCoffeeImg}

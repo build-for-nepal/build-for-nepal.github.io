@@ -1,6 +1,6 @@
 import { Mail } from "lucide-react";
-import bannerImg from "@/assets/feedback-people.png"; // replace with your asset
-import { FEEDBACK_URL } from "@/data/footer";
+import bannerImg from "@/assets/feedback-people.png";
+import { Link } from "react-router-dom";
 
 export default function FeedbackBanner() {
   return (
@@ -30,15 +30,13 @@ export default function FeedbackBanner() {
             Build For Nepal is more than code
           </p>
 
-          <a
-            href={FEEDBACK_URL}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            to="/contact"
             className="mt-6 inline-flex w-fit items-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-accent-hover"
           >
             <Mail className="h-4 w-4" aria-hidden />
             Drop Feedback
-          </a>
+          </Link>
         </div>
       </div>
     </section>

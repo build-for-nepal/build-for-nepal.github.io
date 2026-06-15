@@ -13,6 +13,10 @@
   --color-footer: #163152;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   @apply bg-bg font-sans;
 }
