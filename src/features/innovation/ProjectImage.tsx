@@ -7,14 +7,6 @@ interface ProjectImageProps {
   className?: string;
 }
 
-/**
- * Illustration slot for the active Innovation Hub project.
- *
- * The wrapper accepts the size from the parent (so every item occupies
- * exactly the same box). The image inside uses object-contain so SVGs
- * with different aspect ratios scale to fit without distortion or
- * pushing the layout around.
- */
 export default function ProjectImage({ item, className }: ProjectImageProps) {
   const { image, id } = item;
 

@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 export default function Logo() {
   return (
     <Link to="/" aria-label="Build for Nepal- go to homepage">
-      {/*Mountain SVG icon*/}
       <MountainIcon className="h-12 w-auto" />
     </Link>
   );

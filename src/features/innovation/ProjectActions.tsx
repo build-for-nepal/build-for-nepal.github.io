@@ -7,10 +7,6 @@ interface ProjectActionsProps {
   className?: string;
 }
 
-/**
- * Row of CTA buttons for the active project. Wraps onto multiple lines
- * on narrow screens.
- */
 export default function ProjectActions({ item, className }: ProjectActionsProps) {
   if (item.links.length === 0) return null;
 

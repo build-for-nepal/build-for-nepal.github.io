@@ -25,8 +25,6 @@ export default function Header() {
             </NavLink>
           ))}
         </nav>
-        {/*Mobile Hamburger*/}
-
         <button
           type="button"
           aria-label={isOpen ? "Close menu" : "Open menu"}
@@ -40,7 +38,6 @@ export default function Header() {
           : <Menu size={24} />}
         </button>
 
-        {/*MOBILE MENU: only rendered when isOpen is true*/}
       </div>
       {isOpen && (
         <div

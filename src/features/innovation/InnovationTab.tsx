@@ -12,7 +12,8 @@ export default function InnovationTab({
   isActive,
   onSelect,
 }: InnovationTabProps) {
-  const { id, label, icon: Icon } = item;
+  const { id, icon: Icon } = item;
+  const label = item.label ?? item.title;
   return (
     <button
       type="button"
@@ -23,9 +24,8 @@ export default function InnovationTab({
       tabIndex={isActive ? 0 : -1}
       onClick={() => onSelect(id)}
       className={cn(
-        // `relative` so the accent overlay positions against this button.
+        // relative so the accent bar positions against this button
         "relative flex shrink-0 items-center gap-2 whitespace-nowrap text-left text-sm transition-colors",
-        // Padding only — the rail is on the parent.
         "px-3 py-2 xl:w-full xl:px-5 xl:py-5 xl:text-base",
         "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/40",
         isActive ?
@@ -37,8 +37,8 @@ export default function InnovationTab({
         aria-hidden
         className={cn(
           "pointer-events-none absolute bg-primary transition-opacity",
-          "inset-x-0 bottom-0 h-[2px]",
-          "xl:inset-x-auto xl:left-0 xl:inset-y-0 xl:h-full xl:w-[2px]",
+          "inset-x-0 bottom-0 h-0.5",
+          "xl:inset-x-auto xl:left-0 xl:inset-y-0 xl:h-full xl:w-0.5",
           isActive ? "opacity-100" : "opacity-0",
         )}
       />

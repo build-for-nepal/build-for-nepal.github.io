@@ -9,7 +9,7 @@ export const SLIDES_DATA = [
     subtitle:
       "Explore our collection of Nepali-focused applications designed to make daily tasks simpler and more accessible for everyone!",
     ctaLabel: "Explore Projects",
-    ctaHref: "/projects",
+    ctaHref: "#innovation-hub",
     illustration: {
       src: cityImg,
       alt: "Illustrated Kathmandu skyline with mountains",
@@ -21,7 +21,7 @@ export const SLIDES_DATA = [
     subtitle:
       "Your all-in-one guide to Nepal's best hiking trails, detailed maps, cost breakdowns and local insights for every trekker.",
     ctaLabel: "Explore Project",
-    ctaHref: "/projects/trail-nepal",
+    ctaHref: "https://trails.buildfornepal.org/",
     illustration: {
       src: hikerImg,
       alt: "Illustrated hiker with backpack standing on rocky terrain",

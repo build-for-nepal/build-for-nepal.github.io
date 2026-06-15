@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "sync:collaborators": "node scripts/fetch-collaborators.mjs"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",

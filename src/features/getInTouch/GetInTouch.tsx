@@ -5,8 +5,7 @@ import ContactForm from "./ContactForm";
 export default function GetInTouch() {
   return (
     <section aria-labelledby="get-in-touch-heading" className="bg-bg">
-      {/* TEAL BANNER — pt-20 pb-40 matches the Mission section pattern.
-          The big pb creates room for the content card to "break" the band. */}
+      {/* pb-40 creates room for the content card to overlap the band below */}
       <div className="bg-primary px-6 pt-20 pb-40 text-center">
         <h2
           id="get-in-touch-heading"
@@ -20,16 +19,13 @@ export default function GetInTouch() {
         </p>
       </div>
 
-      {/* CONTENT — overlap pattern from Mission: page-wrapper + -mt-10
-          pulls content up to break into the teal band above. */}
+      {/* -mt-10 pulls the card up to overlap the teal band above */}
       <div className="page-wrapper -mt-10 pb-16 sm:pb-20">
         <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8">
-          {/* Form spans 2 cols at lg so it gets the most space. */}
           <div className="lg:col-span-2">
             <ContactForm />
           </div>
 
-          {/* Right column — stacked channel cards. */}
           <div className="flex flex-col gap-4 sm:gap-6">
             {CONTACT_CHANNELS.map((channel) => (
               <ContactChannelCard key={channel.id} channel={channel} />

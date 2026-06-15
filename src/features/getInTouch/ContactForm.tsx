@@ -46,23 +46,18 @@ export default function ContactForm() {
 
     setIsSubmitted(true);
     reset();
-    // No auto-dismiss — user clicks "Send another message" to come back.
-    // Industry standard: don't yank confirmation away before the user reads it.
+    // no auto-dismiss — user clicks "Send another message" to reset
   };
 
-  // Lets the user go back to the form after seeing the success state.
   const handleSendAnother = () => setIsSubmitted(false);
 
-  // SUCCESS STATE — replaces the form entirely once a submission lands.
-  // Same card shell as the form so the layout doesn't jump.
   if (isSubmitted) {
     return (
       <div
         role="status"
         aria-live="polite"
-        className="flex min-h-[400px] flex-col items-center justify-center rounded-2xl bg-white p-8 text-center shadow-md sm:p-12"
+        className="flex min-h-100 flex-col items-center justify-center rounded-2xl bg-white p-8 text-center shadow-md sm:p-12"
       >
-        {/* Soft teal halo behind the icon for a "celebratory" hit without being noisy. */}
         <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10">
           <CheckCircle2 className="h-10 w-10 text-primary" aria-hidden="true" />
         </div>
@@ -97,7 +92,6 @@ export default function ContactForm() {
         noValidate
         className="mt-6 space-y-5"
       >
-        {/* Name + Email row. */}
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
           <Field
             label="Full Name"
