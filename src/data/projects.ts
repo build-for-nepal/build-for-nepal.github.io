@@ -15,7 +15,7 @@ import nepaliCalendarImg from "@/assets/nepali-calander.svg";
 import trailNepalIllustration from "@/assets/trail-nepal.svg";
 
 // Photos for Core Products featured card
-import trailNepalPhoto from "@/assets/trailNepal.png";
+import trailNepalPhoto from "@/assets/trailNepal.webp";
 export const PROJECTS: Project[] = [
   {
     id: "trails-nepal",
@@ -74,7 +74,7 @@ export const PROJECTS: Project[] = [
     id: "nepali-calendar",
     title: "Nepali Calendar",
     description:
-      "Keep track of Nepali dates with a detailed calendar. Know the month, day, and year in Bikram Sambat with our easy-to-use Nepali Calendar component.",
+      "Track Nepali dates with a detailed Bikram Sambat calendar, showing the month, day, and year through an easy-to-use component.",
     icon: Calendar,
     image: {
       src: nepaliCalendarImg,
@@ -99,7 +99,7 @@ export const PROJECTS: Project[] = [
     id: "nepal-map",
     title: "Nepal Map",
     description:
-      "Interactive map of Nepal with provinces, districts, and key landmarks ready to drop into any Nepali web app.",
+      "Explore Nepal's provinces, districts, and key landmarks on an interactive map, built ready to drop into any Nepali web app.",
     icon: MapPin,
     image: { src: nepalMapImg, alt: "Stylised map of Nepal illustration" },
     links: [

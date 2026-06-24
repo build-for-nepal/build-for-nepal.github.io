@@ -1,5 +1,5 @@
 import { Mail } from "lucide-react";
-import bannerImg from "@/assets/feedback-people.png";
+import bannerImg from "@/assets/feedback-people.webp";
 import { Link } from "react-router-dom";
 
 export default function FeedbackBanner() {

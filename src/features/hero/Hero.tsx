@@ -69,7 +69,10 @@ export default function Hero() {
       }}
       onTouchEnd={(e) => {
         const diff = touchStartX.current - e.changedTouches[0].clientX;
-        if (Math.abs(diff) > 50) diff > 0 ? next() : prev();
+        if (Math.abs(diff) > 50) {
+          if (diff > 0) next();
+          else prev();
+        }
       }}
     >
       <div ref={slideRef} className="w-full">

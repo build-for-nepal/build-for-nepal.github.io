@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "sync:collaborators": "node scripts/fetch-collaborators.mjs"
+    "sync:collaborators": "node scripts/fetch-collaborators.mjs",
+    "convert:images": "node scripts/convert-images.mjs"
   },
   "dependencies": {
     "@gsap/react": "^2.1.2",
@@ -32,6 +33,7 @@
     "eslint-plugin-react-hooks": "^7.1.1",
     "eslint-plugin-react-refresh": "^0.5.2",
     "globals": "^17.6.0",
+    "sharp": "0.35.1",
     "tailwindcss": "^4.3.0",
     "typescript": "~6.0.2",
     "typescript-eslint": "^8.59.2",

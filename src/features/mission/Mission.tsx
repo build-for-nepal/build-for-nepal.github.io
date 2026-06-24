@@ -1,5 +1,5 @@
 import type { MissionProps } from "@/types/mission";
-import laptopCoffeeImg from "@/assets/laptopCoffee.png";
+import laptopCoffeeImg from "@/assets/laptopCoffee.webp";
 
 export default function Mission({ activeProductCount }: MissionProps) {
   return (
@@ -52,6 +52,8 @@ export default function Mission({ activeProductCount }: MissionProps) {
             <img
               src={laptopCoffeeImg}
               alt="Laptop showing code beside a cup of coffee"
+              loading="lazy"
+              decoding="async"
               className="w-full h-auto rounded-2xl object-cover"
             />
             <div className="absolute -bottom-4 -left-4 bg-primary text-white rounded-xl px-5 py-3 shadow-lg">

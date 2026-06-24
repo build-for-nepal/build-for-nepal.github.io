@@ -2,13 +2,42 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/src/assets/logo.png" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <meta name="theme-color" content="#0E8D8B" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
     <title>Build for Nepal</title>
+    <meta
+      name="description"
+      content="Open-source tools built for Nepal. Date converters, interactive maps, trail guides, and more by the Build for Nepal community."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Build for Nepal" />
+    <meta property="og:title" content="Build for Nepal" />
+    <meta
+      property="og:description"
+      content="Open-source tools built for Nepal. Date converters, interactive maps, trail guides, and more by the Build for Nepal community."
+    />
+    <meta property="og:url" content="https://build-for-nepal.github.io" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Build for Nepal" />
+    <meta
+      name="twitter:description"
+      content="Open-source tools built for Nepal. Date converters, interactive maps, trail guides, and more by the Build for Nepal community."
+    />
+    <script>
+      // Companion to public/404.html, decodes the path encoded by the GH Pages
+      // SPA fallback and replaces the history entry so React Router sees the
+      // correct URL from the start.
+      (function () {
+        var p = new URLSearchParams(window.location.search).get("p");
+        if (p) window.history.replaceState(null, "", decodeURIComponent(p));
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

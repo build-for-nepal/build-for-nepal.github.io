@@ -1,6 +1,6 @@
 import cityImg from "@/assets/city-half.svg";
 import hikerImg from "@/assets/Hiker boy.svg";
-import mountainImg from "@/assets/mountain.png";
+import mountainImg from "@/assets/mountain.webp";
 
 export const SLIDES_DATA = [
   {
