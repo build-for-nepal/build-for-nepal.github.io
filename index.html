@@ -1,46 +1,142 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="apple-touch-icon" href="/favicon.svg" />
-    <meta name="theme-color" content="#0E8D8B" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="./assets/logo.png" />
+    <title>Build for Nepal</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap"
       rel="stylesheet"
     />
-    <title>Build for Nepal</title>
-    <meta
-      name="description"
-      content="Open-source tools built for Nepal. Date converters, interactive maps, trail guides, and more by the Build for Nepal community."
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Build for Nepal" />
-    <meta property="og:title" content="Build for Nepal" />
-    <meta
-      property="og:description"
-      content="Open-source tools built for Nepal. Date converters, interactive maps, trail guides, and more by the Build for Nepal community."
-    />
-    <meta property="og:url" content="https://build-for-nepal.github.io" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Build for Nepal" />
-    <meta
-      name="twitter:description"
-      content="Open-source tools built for Nepal. Date converters, interactive maps, trail guides, and more by the Build for Nepal community."
-    />
-    <script>
-      // Companion to public/404.html, decodes the path encoded by the GH Pages
-      // SPA fallback and replaces the history entry so React Router sees the
-      // correct URL from the start.
-      (function () {
-        var p = new URLSearchParams(window.location.search).get("p");
-        if (p) window.history.replaceState(null, "", decodeURIComponent(p));
-      })();
-    </script>
+
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
+    <header>
+      <div class="header-container">
+        <!-- Logo -->
+        <img src="./assets/logo.png" alt="Build for Nepal Logo" class="logo" />
+
+        <!-- Title and Subtitle -->
+        <div class="header-text">
+          <h1>Build for Nepal</h1>
+          <p>Explore Our Nepali Apps to Make Life Easier</p>
+        </div>
+      </div>
+    </header>
+
+    <div class="hero">
+      <h2>Welcome to Build for Nepal</h2>
+      <p>
+        Explore our collection of Nepali-focused applications designed to make
+        daily tasks simpler and more accessible for everyone!
+      </p>
+      <img src="./assets/image.png" alt="image" class="hero-image" />
+    </div>
+
+    <div class="sections">
+      <!-- Ad-BS Converter -->
+      <div class="section">
+        <h3>Ad-BS Converter</h3>
+        <p>
+          Convert Nepali dates between the Nepali (Bikram Sambat) and English
+          (Gregorian) calendars effortlessly. Ideal for tracking historical
+          events and personal dates.
+        </p>
+        <div class="btn-group">
+          <button class="btn" onclick="window.location.href='#'">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            Try Now
+          </button>
+          <a
+            href="https://www.npmjs.com/package/ad-bs-converter"
+            target="_blank"
+            class="npm-link"
+          >
+            <i class="fa-brands fa-npm"></i>
+            NPM</a
+          >
+          <a
+            href="https://github.com/build-for-nepal/ad-bs-converter"
+            target="_blank"
+            class="github-link"
+          >
+            <i class="fa-brands fa-github"></i>
+            GitHub</a
+          >
+        </div>
+      </div>
+
+      <!-- Nepal Map -->
+      <div class="section">
+        <h3>Nepal Map</h3>
+        <p>
+          Get an interactive map of Nepal to explore the geography, cities, and
+          regions with ease. Perfect for anyone looking to discover Nepal.
+        </p>
+        <div class="btn-group">
+          <button class="btn" onclick="window.location.href='#'">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Explore Map
+          </button>
+          <a
+            href="https://www.npmjs.com/package/nepal-map"
+            target="_blank"
+            class="npm-link"
+          >
+            <i class="fa-brands fa-npm"></i>
+            NPM</a
+          >
+          <a
+            href="https://github.com/build-for-nepal/nepal-map"
+            target="_blank"
+            class="github-link"
+          >
+            <i class="fa-brands fa-github"></i>
+            GitHub</a
+          >
+        </div>
+      </div>
+
+      <!-- Nepali Calendar -->
+      <div class="section">
+        <h3>Nepali Calendar</h3>
+        <p>
+          Keep track of Nepali dates with a detailed calendar. Know the month,
+          day, and year in Bikram Sambat with our easy-to-use Nepali Calendar
+          component.
+        </p>
+        <div class="btn-group">
+          <button class="btn" onclick="window.location.href='#'">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            Check Calendar
+          </button>
+          <a
+            href="https://www.npmjs.com/package/nepali-calendar"
+            target="_blank"
+            class="npm-link"
+          >
+            <i class="fa-brands fa-npm"></i>
+            NPM</a
+          >
+          <a
+            href="https://github.com/build-for-nepal/bikram-samvat-calendar"
+            target="_blank"
+            class="github-link"
+          >
+            <i class="fa-brands fa-github"></i>
+            GitHub</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p>&copy; 2024 Build for Nepal. All Rights Reserved.</p>
+    </footer>
   </body>
 </html>
