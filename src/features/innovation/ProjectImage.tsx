@@ -17,7 +17,7 @@ export default function ProjectImage({ item, className }: ProjectImageProps) {
         className,
       )}
     >
-      {image.src ? (
+      {image?.src ? (
         <img
           key={id}
           src={image.src}

@@ -32,7 +32,7 @@ export default function MoreInDevCard() {
               <img
                 src={person.avatar_url}
                 alt=""
-                className="h-11 w-11 rounded-full object-cover ring-2 ring-primary"
+                className="h-11 w-11 rounded-full object-cover ring-2 ring-white"
               />
             </a>
           ))}
@@ -43,7 +43,7 @@ export default function MoreInDevCard() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`${extraCount} more contributors on GitHub`}
-              className="flex h-11 w-11 flex-col items-center justify-center rounded-full bg-primary/80 text-[10px] font-bold leading-none text-white ring-2 ring-primary transition-transform hover:z-10 hover:scale-110"
+              className="flex h-11 w-11 flex-col items-center justify-center rounded-full bg-white text-[10px] font-bold leading-none text-primary ring-2 ring-primary transition-transform hover:z-10 hover:scale-110"
             >
               <Users className="h-3 w-3" aria-hidden="true" />
               <span className="mt-0.5">+{extraCount}</span>

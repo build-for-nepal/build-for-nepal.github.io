@@ -1,6 +1,6 @@
 import { CheckCircle2, ChevronRight } from "lucide-react";
 import { useState } from "react";
-import { useForm, useWatch } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import type { ContactFormPayload, ContactSubject } from "@/types/contact";
 
 const SUBJECT_OPTIONS: { value: ContactSubject; label: string }[] = [
@@ -12,44 +12,74 @@ const SUBJECT_OPTIONS: { value: ContactSubject; label: string }[] = [
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-type FormState = Omit<ContactFormPayload, "subject"> & {
-  subject: ContactSubject | "";
-};
+type FormState = ContactFormPayload;
 
 export default function ContactForm() {
   const {
     register,
     handleSubmit,
     reset,
-    control,
     formState: { errors, isSubmitting },
   } = useForm<FormState>({
     defaultValues: {
       fullName: "",
       email: "",
-      subject: "",
+      subject: "general",
       message: "",
     },
   });
 
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
 
-  const subjectValue = useWatch({ control, name: "subject" });
+  const onSubmit = async (data: FormState) => {
+    setSubmitError(null);
 
-  const onSubmit = (data: FormState) => {
-    if (!data.subject) return;
+    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+    if (!accessKey) {
+      setSubmitError("Form is not configured. Please email us directly.");
+      return;
+    }
 
-    const payload: ContactFormPayload = { ...data, subject: data.subject };
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          subject: `[BFN Contact] ${SUBJECT_OPTIONS.find((o) => o.value === data.subject)?.label ?? data.subject}`,
+          from_name: data.fullName,
+          replyto: data.email,
+          name: data.fullName,
+          email: data.email,
+          message: data.message,
+          botcheck: "",
+        }),
+      });
 
-    // TODO(backend): swap console.log for a real submit handler
-    console.log("Contact form submitted:", payload);
+      const result = await res.json();
+      if (!res.ok || !result.success) {
+        throw new Error(result.message ?? "Something went wrong sending your message.");
+      }
 
-    setIsSubmitted(true);
-    reset();
-    // no auto-dismiss — user clicks "Send another message" to reset
+      setIsSubmitted(true);
+      reset();
+    } catch (err) {
+      setSubmitError(
+        err instanceof Error
+          ? err.message
+          : "Couldn't send your message. Please try again or email us directly.",
+      );
+    }
   };
 
-  const handleSendAnother = () => setIsSubmitted(false);
+  const handleSendAnother = () => {
+    setIsSubmitted(false);
+    setSubmitError(null);
+  };
 
   if (isSubmitted) {
     return (
@@ -138,14 +168,11 @@ export default function ContactForm() {
         >
           <select
             id="subject"
-            className={`input-base ${subjectValue === "" ? "text-gray-400" : "text-dark"}`}
+            className="input-base text-dark"
             {...register("subject", { required: "Please choose a subject" })}
           >
-            <option value="" disabled hidden>
-              General Inquiry
-            </option>
             {SUBJECT_OPTIONS.map((opt) => (
-              <option key={opt.value} value={opt.value} className="text-dark">
+              <option key={opt.value} value={opt.value}>
                 {opt.label}
               </option>
             ))}
@@ -168,6 +195,15 @@ export default function ContactForm() {
             })}
           />
         </Field>
+
+        {submitError && (
+          <p
+            role="alert"
+            className="rounded-lg border border-red-200 bg-red-50 p-3 text-sm text-red-700"
+          >
+            {submitError}
+          </p>
+        )}
 
         <button
           type="submit"

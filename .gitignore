@@ -13,6 +13,9 @@ dist-ssr
 *.local
 .vite
 
+# Local-only utility scripts (not committed)
+scripts/convert-images.mjs
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
