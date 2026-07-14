@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://build-for-nepal.github.io/sitemap.xml
